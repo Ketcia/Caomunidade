@@ -1,22 +1,58 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {
-  View, Text, Image, SafeAreaView, FlatList
+  FlatList,
+  ImageBackground,
+  SafeAreaView,
+  TextInput,
+  View,
+  TouchableOpacity,
+  Text,
 } from "react-native";
+import { FontAwesome5 } from "@expo/vector-icons";
+import {CardComp, LoadingComp} from "../../components";
+import {AdocaoTypes} from "../../types/Screen.types";
+import {apiMensagem} from "../../services/data";
+import {IMensagemState} from "../../interfaces/Mensagem.interface";
 import styles from "./styles";
 import data from "../../services/data";
 import Card from "../../components/Card";
 
+export default function Adocao({navigation}:AdocaoTypes) {
+  const [isLoading, setIsLoading] = useState(true);
+  const [mensagem, setMensagem] = useState<IMensagemState[]>([]);
+  function handleadocao() {
+    navigation.navigate("EnviarMensagem");
+  }
 
-export default function Chat() {
-  const renderItem = ({ item }: any) => <Card data={item} />
+  useEffect(() => {
+    async function loadMensagem() {
+      const response = await apiMensagem.index();
+      setMensagem(response.data.data);
+      setIsLoading(false);
+    }
+    navigation.addListener("focus", () => loadMensagem());
+  },[]);
+
+  const renderItem = ({ item }) => <CardComp data={item} />;
   return (
-      <SafeAreaView style={styles.container}>
-        <FlatList
-          data={data}
-          renderItem={renderItem}
-          keyExtractor={(item) => String(item.id)}
-          style={styles.list}
-        />
-      </SafeAreaView>
+      <>
+        <SafeAreaView style={styles.container}>
+          <View style={styles.rowSearch}>
+            <FontAwesome5 name="search" style={styles.icon} />
+            <TextInput placeholder="Pesquisar adoção" style={styles.input} />
+          </View>
+          {mensagem.length > 0 && (
+            <FlatList
+              data={data}
+              renderItem={renderItem}
+              keyExtractor={(item) => String(item.id)}
+              style={styles.list}
+            />
+          )}
+          <TouchableOpacity style={styles.button} onPress={handleadocao}>
+            <Text style={styles.buttonText}>+</Text>
+          </TouchableOpacity>
+        </SafeAreaView>
+      </>
   );
 }

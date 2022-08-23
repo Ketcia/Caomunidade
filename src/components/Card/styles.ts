@@ -3,10 +3,10 @@ import colors from "../../styles/colors";
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: colors.marrom,
+    backgroundColor: colors.marromC,
     borderRadius: 10,
     margin: 10,
-    width: "90%",
+    width: "95%",
     alignItems: "center",
   },
 })
