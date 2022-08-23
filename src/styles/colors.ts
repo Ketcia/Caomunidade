@@ -5,4 +5,5 @@ export default {
   verde:'#2BAB71',
   marrom:'#815834',
   marromC:'rgba(129, 88, 52, 0.4)',
+  cinza: '#3d3d3d'
 }
