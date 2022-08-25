@@ -1,4 +1,4 @@
-import api from "../../api";
+import api from "../../api"
 import {ITopico} from "../../../interfaces/Topico.interface"
 
 class TopicoData{
@@ -7,4 +7,4 @@ class TopicoData{
     }
 }
 
-export default new TopicoData();
+export default new TopicoData()
