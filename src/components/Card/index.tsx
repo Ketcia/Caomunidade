@@ -18,7 +18,7 @@ export default function Card({ data }: IMensagemState) {
         <View style={styles.topicos}>
           {data.topico.map((i) => (
             <View key={i.id} style={styles.topic}>
-              <Text>{i.item}</Text>
+              <Text>{i.topico}</Text>
             </View>
           ))}
         </View>

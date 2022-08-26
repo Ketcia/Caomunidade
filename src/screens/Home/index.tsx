@@ -4,11 +4,14 @@ import {
 } from "react-native";
 import styles from "./styles";
 
-export default function adocao() {
+export default function Adocao() {
   
   return (
-      <View style={styles.container} >
+    <>
+       <View style={styles.container}>
           <Text>Home</Text>
       </View>
+    </>
+     
   );
 }

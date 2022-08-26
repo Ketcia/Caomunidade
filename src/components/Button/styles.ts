@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
     margin: 10
   },
   buttonThird: {
-    backgroundColor: colors.preto,
+    backgroundColor: colors.marromC,
     borderRadius: 20,
     margin: 10,
     width: '90%'

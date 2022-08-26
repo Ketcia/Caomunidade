@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
         justifyContent:"space-between",
     },
     buttonPreviweVisible:{
-        widht:130,
+        width:130,
         height:40,
         alignItems:"center",
         borderRadius:4,
