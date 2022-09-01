@@ -54,7 +54,7 @@ export default function EnviarMensagem({ navigation }: AdocaoTypes) {
     };
 
     function handleVoltar() {
-        navigation.navigate("Chat");
+        navigation.navigate("Adocao");
     }
     function handleChange(item: IMensagem) {
         setData({ ...data, ...item });
@@ -76,7 +76,7 @@ export default function EnviarMensagem({ navigation }: AdocaoTypes) {
                     formData.append("topico[]", e);
                 });
                 await apiMensagem.store(formData as IMensagem);
-                navigation.navigate("Chat");
+                navigation.navigate("Adocao");
             } else {
                 Alert.alert("Preencha todos os campos!!!");
                 setIsLoading(false);
@@ -114,10 +114,7 @@ export default function EnviarMensagem({ navigation }: AdocaoTypes) {
             {isLoading ? (
                 <LoadingComp />
             ) : (
-                <ImageBackground
-                    source={require("../../assets/fundo.png")}
-                    style={styles.container}
-                >
+                <View style={styles.container}>
                     {startOver ? (
                         <KeyboardAvoidingView style={styles.containerForm}>
                             <TextInput
@@ -217,7 +214,7 @@ export default function EnviarMensagem({ navigation }: AdocaoTypes) {
                             </View>
                         </Camera>
                     )}
-                </ImageBackground>
+                </View>
                 
             )}
         </>
