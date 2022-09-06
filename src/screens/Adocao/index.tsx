@@ -37,10 +37,6 @@ export default function Adocao({navigation}:AdocaoTypes) {
   return (
       <>
         <SafeAreaView style={styles.container}>
-          <View style={styles.rowSearch}>
-            <FontAwesome5 name="search" style={styles.icon} />
-            <TextInput placeholder="Pesquisar adoção" style={styles.input} />
-          </View>
           {mensagem.length > 0 && (
             <FlatList
               data={data}

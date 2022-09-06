@@ -1,10 +1,11 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { HomeScreen, AdocaoScreen, PropagandaScreen } from "../screens";
+import { HomeScreen, AdocaoScreen, PropagandaScreen, PerfilScreen } from "../screens";
 import colors from "../styles/colors";
 import { MaterialIcons } from '@expo/vector-icons';
 import { FontAwesome, Ionicons } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons'; 
+import AdocaoNavigation from "./adocao.navigation"
 
 const Tab = createBottomTabNavigator();
 
@@ -29,11 +30,17 @@ export default function TabNavigation() {
         }}
       />
       <Tab.Screen
-        name="Adocao"
-        component={AdocaoScreen}
+        name="AdocaoNavigation"
+        component={AdocaoNavigation}
         options={{
+          title: "Adocao",
+          tabBarLabel: "Adocao",
           tabBarIcon: () => (
-            <FontAwesome name="paw" size={24} color="white" />
+            <FontAwesome 
+              name="paw" 
+              size={24} 
+              color={colors.branco}
+            />
           ),
         }}
       />
@@ -48,13 +55,13 @@ export default function TabNavigation() {
       />
       <Tab.Screen
         name="Perfil"
-        component={AdocaoScreen}
+        component={PerfilScreen}
         options={{
           tabBarIcon: () => (
             <Ionicons name="person" size={24} color="white" />
           ),
         }}
-      />
+      />      
     </Tab.Navigator>
   );
 }

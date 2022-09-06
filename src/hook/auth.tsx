@@ -5,7 +5,7 @@ import React, {
     useState,
     useEffect,
 }from "react";
-import {apiUser} from "../services/api";
+import {apiUser} from "../services/data/User";
 import api from "../services/api";
 import { IAuthState, IAuthContextData } from "../interfaces/User.interface";
 import AsyncStorage from "@react-native-async-storage/async-storage";

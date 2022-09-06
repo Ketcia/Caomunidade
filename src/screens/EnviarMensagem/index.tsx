@@ -126,14 +126,14 @@ export default function EnviarMensagem({ navigation }: AdocaoTypes) {
                                 style={styles.input}
                                 multiline={true}
                                 numberOfLines={4}
-                                placeholder="Mensagem"
+                                placeholder="Descrição"
                                 onChangeText={(i) => handleChange({ mensagem: i })}
                             />
                             <View style={styles.select}>
                                 <MultiSelect
                                     items={topico}
                                     uniqueKey="id"
-                                    selectText="Selecione os Tópicos "
+                                    selectText="Selecione o sexo"
                                     onSelectedItemsChange={(i) => setSelectedTopico(i)}
                                     selectedItems={selectedTopico}
                                     selectedItemTextColor={colors.marrom}
@@ -168,7 +168,7 @@ export default function EnviarMensagem({ navigation }: AdocaoTypes) {
                             />
                             <ButtonComp
                                 title="Voltar"
-                                type="third"
+                                type="secondary"
                                 onPress={handleVoltar}
                             />
                         </KeyboardAvoidingView>

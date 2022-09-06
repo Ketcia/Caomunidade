@@ -8,22 +8,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor:colors.fundo,
   },
-  rowSearch: {
-    flexDirection: 'row',
-    backgroundColor: colors.marromC,
-    borderRadius: 10,
-    margin: 10,
-    alignItems: 'center',
-    width: "80%",
-    height: 45,
-  },
-  input: {
-    width: "80%"
-  },
-  icon: {
-    fontSize: 24,
-    padding: 5,
-  },
   img: {
     width: 100,
     height: 100,

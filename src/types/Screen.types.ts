@@ -13,7 +13,7 @@ export type LoginTypes = {
 
 //Adocao Stack
 export type AdocaoStackParamList = {
-  Chat: undefined
+  Adocao: undefined
   EnviarMensagem: undefined
 }
 type AdocaoScreenNavigationProp = StackNavigationProp<AdocaoStackParamList, 'Adocao'>

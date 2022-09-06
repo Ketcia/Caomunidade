@@ -10,6 +10,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         width: "100%",
+        backgroundColor: colors.fundo,
     },
     input: {
         fontSize: 18,

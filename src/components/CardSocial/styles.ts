@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
     width: "90%",
     flexDirection: "row",
     alignItems: "center",
-    height: 45
+    height: 45,
   }
 })
 
