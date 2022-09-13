@@ -31,6 +31,12 @@ export default function EnviarMensagem({ navigation }: AdocaoTypes) {
     const [startOver, setStartOver] = useState(true);
     const [type, setType] = useState(Camera.Constants.Type.back);
     let camera: Camera;
+    useEffect(() => {
+        (async () => {
+            const { status } = await Camera.requestCameraPermissionsAsync();
+            setHasPermission(status === "granted");
+        })();
+    }, []);
 
     const takePicture = async () => {
         if (!camera) return;

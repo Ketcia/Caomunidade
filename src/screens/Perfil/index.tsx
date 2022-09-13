@@ -48,12 +48,15 @@ export default function Perfil() {
           <Text style={styles.link}>https://linkedin.com</Text>
         </>
       </CardSocialComp>
+      <View style={styles.button}>
       <Button
         title="Alterar Senha"
         type="primary"
         onPress={() => console.log("Alterar Senha")}
       />
       <Button title="Sair" type="primary" onPress={logout} />
+      </View>
+      
     </View>
   );
 }

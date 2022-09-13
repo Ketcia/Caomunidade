@@ -9,7 +9,7 @@ export default function Propaganda() {
   return (
     <>
        <View style={styles.container}>
-          <Text>O Caomunidade foi criado pelas alunas do 
+          <Text style={styles.text}>O Caomunidade foi criado pelas alunas do 
             Cefet-MG de Varginha. Seu intuíto é ajudar as 
             ongues e a sociedade com a adoção e doação de 
             doguinhos, para que o abandono e a morte desses 

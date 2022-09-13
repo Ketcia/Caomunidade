@@ -8,6 +8,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor:colors.fundo,
   },
+  text:{
+    margin:10,
+    backgroundColor:colors.marromC,
+    padding:5,
+    borderRadius:15
+  }
 })
 
 export default styles

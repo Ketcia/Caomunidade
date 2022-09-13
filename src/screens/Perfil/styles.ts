@@ -18,10 +18,12 @@ const styles = StyleSheet.create({
   },
   icon: {
     fontSize: 24,
-    padding: 5
+    padding: 5,
+    color:colors.branco
   },
   link: {
-    fontSize: 20
+    fontSize: 20,
+    color:colors.branco
   },
   img: {
     width: 80,
