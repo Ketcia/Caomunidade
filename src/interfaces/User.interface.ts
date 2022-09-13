@@ -1,14 +1,13 @@
-export interface IRegister{
+export interface IRegister {
     name?: string;
     email?: string;
     password?: string;
 }
-export interface IAuthenticate{
+export interface IAuthenticate {
     email?: string;
     password?: string;
 }
-
-export interface IUser{
+export interface IUser {
     status: string,
     message: string,
     data: {
@@ -31,7 +30,6 @@ export interface IAuthState {
         profile_photo_url: string
     }
 }
-
 export interface IAuthContextData {
     register(credentials: IRegister): Promise<void>;
     signIn(credentials: IAuthenticate): Promise<void>;
