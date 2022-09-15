@@ -34,7 +34,7 @@ export default function TabNavigation() {
         component={AdocaoNavigation}
         options={{
           title: "Adocao",
-          tabBarLabel: "Adocao",
+          tabBarLabel: "Publicar",
           tabBarIcon: () => (
             <FontAwesome 
               name="paw" 

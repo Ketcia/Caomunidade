@@ -8,20 +8,19 @@ import {
   TouchableOpacity,
   Text,
 } from "react-native";
-import { FontAwesome5 } from "@expo/vector-icons";
 import {CardComp, LoadingComp} from "../../components";
 import {AdocaoTypes} from "../../types/Screen.types";
 import {apiMensagem} from "../../services/data";
 import {IMensagemState} from "../../interfaces/Mensagem.interface";
 import styles from "./styles";
 import data from "../../services/data";
-import Card from "../../components/Card";
+
 
 export default function Adocao({navigation}:AdocaoTypes) {
   const [isLoading, setIsLoading] = useState(true);
   const [mensagem, setMensagem] = useState<IMensagemState[]>([]);
   function handleadocao() {
-    navigation.navigate("EnviarMensagem");
+    navigation.navigate("FazerPublicacao");
   }
 
   useEffect(() => {

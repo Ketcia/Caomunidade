@@ -12,7 +12,7 @@ import {
 import { FontAwesome } from "@expo/vector-icons";
 import {ButtonComp,LoadingComp} from "../../components";
 import styles from "./styles";
-import { AdocaoTypes } from "../../types/Screen.types";
+import { ChatTypes } from "../../types/Screen.types";
 import { AxiosError } from "axios";
 import { IResponse } from "../../interfaces/Response.interface";
 import { apiMensagem, apiTopico} from "../../services/data";
@@ -23,20 +23,14 @@ import * as ImagePicker from "expo-image-picker";
 import { IMensagem } from "../../interfaces/Mensagem.interface";
 import colors from "../../styles/colors";
 
-export default function EnviarMensagem({ navigation }: AdocaoTypes) {
+export default function FazerPublicacao({ navigation }: ChatTypes) {
     const [data, setData] = useState<IMensagem>();
     const [isLoading, setIsLoading] = useState(true);
     const [topico, setTopico] = useState<ITopicoState[]>([]);
-    const [selectedTopico, setSelectedTopico] = useState(true)
+    const [selectedTopico, setSelectedTopico] = useState([])
     const [startOver, setStartOver] = useState(true);
     const [type, setType] = useState(Camera.Constants.Type.back);
     let camera: Camera;
-    useEffect(() => {
-        (async () => {
-            const { status } = await Camera.requestCameraPermissionsAsync();
-            setHasPermission(status === "granted");
-        })();
-    }, []);
 
     const takePicture = async () => {
         if (!camera) return;
@@ -60,7 +54,7 @@ export default function EnviarMensagem({ navigation }: AdocaoTypes) {
     };
 
     function handleVoltar() {
-        navigation.navigate("Adocao");
+        navigation.navigate("Chat");
     }
     function handleChange(item: IMensagem) {
         setData({ ...data, ...item });
@@ -82,7 +76,7 @@ export default function EnviarMensagem({ navigation }: AdocaoTypes) {
                     formData.append("topico[]", e);
                 });
                 await apiMensagem.store(formData as IMensagem);
-                navigation.navigate("Adocao");
+                navigation.navigate("Chat");
             } else {
                 Alert.alert("Preencha todos os campos!!!");
                 setIsLoading(false);
@@ -120,7 +114,10 @@ export default function EnviarMensagem({ navigation }: AdocaoTypes) {
             {isLoading ? (
                 <LoadingComp />
             ) : (
-                <View style={styles.container}>
+                <ImageBackground
+                    source={require("../../assets/fundo.png")}
+                    style={styles.container}
+                >
                     {startOver ? (
                         <KeyboardAvoidingView style={styles.containerForm}>
                             <TextInput
@@ -132,36 +129,21 @@ export default function EnviarMensagem({ navigation }: AdocaoTypes) {
                                 style={styles.input}
                                 multiline={true}
                                 numberOfLines={4}
-                                placeholder="Descrição"
+                                placeholder="Mensagem"
                                 onChangeText={(i) => handleChange({ mensagem: i })}
                             />
-                            <View style={styles.select}>
-                                <MultiSelect
-                                    items={topico}
-                                    uniqueKey="id"
-                                    selectText="Selecione o sexo"
-                                    onSelectedItemsChange={(i) => setSelectedTopico(i)}
-                                    selectedItems={selectedTopico}
-                                    selectedItemTextColor={colors.marrom}
-                                    tagBorderColor={colors.marrom}
-                                    tagTextColor={colors.marrom}
-                                    submitButtonColor={colors.marrom}
-                                    styleDropdownMenu={styles.selectTopico}
-                                    styleInputGroup={styles.selectTopico}
-                                />
-                            </View>
                             <View style={styles.imagem}>
                                 <TouchableOpacity
                                     style={styles.buttonImage}
                                     onPress={() => setStartOver(false)}
                                 >
-                                    <FontAwesome name="camera" size={24} color="preto" />
+                                    <FontAwesome name="camera" size={24} color="black" />
                                 </TouchableOpacity>
                                 <TouchableOpacity
                                     style={styles.buttonImage}
                                     onPress={pickImage}
                                 >
-                                    <FontAwesome name="image" size={24} color="preto" />
+                                    <FontAwesome name="image" size={24} color="black" />
                                 </TouchableOpacity>
                                 {data?.imagem && (
                                     <Image source={{ uri: data.imagem.uri }} style={styles.img} />
@@ -174,7 +156,7 @@ export default function EnviarMensagem({ navigation }: AdocaoTypes) {
                             />
                             <ButtonComp
                                 title="Voltar"
-                                type="secondary"
+                                type="third"
                                 onPress={handleVoltar}
                             />
                         </KeyboardAvoidingView>
@@ -220,7 +202,7 @@ export default function EnviarMensagem({ navigation }: AdocaoTypes) {
                             </View>
                         </Camera>
                     )}
-                </View>
+                </ImageBackground>
                 
             )}
         </>

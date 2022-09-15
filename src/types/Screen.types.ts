@@ -14,7 +14,7 @@ export type LoginTypes = {
 //Adocao Stack
 export type AdocaoStackParamList = {
   Adocao: undefined
-  EnviarMensagem: undefined
+  FazerPublicacao: undefined
 }
 type AdocaoScreenNavigationProp = StackNavigationProp<AdocaoStackParamList, 'Adocao'>
 export type AdocaoTypes = {

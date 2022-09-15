@@ -80,6 +80,15 @@ export default function Cadastrar({ navigation }: LoginTypes) {
                   />
                 </View>
                 <View style={styles.formRow}>
+                  <MaterialIcons name="email" style={styles.icon} />
+                  <TextInput
+                    style={styles.input}
+                    placeholder="Repetir E-mail"
+                    keyboardType="email-address"
+                    autoCapitalize="none"
+                  />
+                </View>
+                <View style={styles.formRow}>
                   <Entypo name="key" style={styles.icon} />
                   <TextInput
                     style={styles.input}
@@ -87,6 +96,15 @@ export default function Cadastrar({ navigation }: LoginTypes) {
                     secureTextEntry={true}
                     autoCapitalize="none"
                     onChangeText={(i) => handleChange({ password: i })}
+                  />
+                </View>
+                <View style={styles.formRow}>
+                  <Entypo name="key" style={styles.icon} />
+                  <TextInput
+                    style={styles.input}
+                    placeholder="Repetir Senha"
+                    secureTextEntry={true}
+                    autoCapitalize="none"
                   />
                 </View>
                 <ButtonComp

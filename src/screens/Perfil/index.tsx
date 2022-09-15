@@ -44,8 +44,8 @@ export default function Perfil() {
       </CardSocialComp>
       <CardSocialComp>
         <>
-          <FontAwesome5 name="linkedin" style={styles.icon} />
-          <Text style={styles.link}>https://linkedin.com</Text>
+          <FontAwesome5 name="map-marker-alt" style={styles.icon} />
+          <Text style={styles.link}>R. Maria Aparecida, 199, Centro</Text>
         </>
       </CardSocialComp>
       <View style={styles.button}>
@@ -54,7 +54,7 @@ export default function Perfil() {
         type="primary"
         onPress={() => console.log("Alterar Senha")}
       />
-      <Button title="Sair" type="primary" onPress={logout} />
+      <Button title="Sair" type="secondary" onPress={logout} />
       </View>
       
     </View>
