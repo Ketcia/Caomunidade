@@ -25,6 +25,10 @@ export default function Cadastrar({ navigation }: LoginTypes) {
   function handleChange(item: IRegister) {
     setData({ ...data, ...item });
   }
+  //async function validar(){
+   // const email = 
+  //}
+
   async function handleRegister() {
     try {
       setIsLoading(true);
@@ -67,11 +71,13 @@ export default function Cadastrar({ navigation }: LoginTypes) {
                     style={styles.input}
                     placeholder="Nome"
                     onChangeText={(i) => handleChange({ name: i })}
+
                   />
                 </View>
                 <View style={styles.formRow}>
                   <MaterialIcons name="email" style={styles.icon} />
                   <TextInput
+                    value={email}
                     style={styles.input}
                     placeholder="E-mail"
                     keyboardType="email-address"
@@ -82,6 +88,7 @@ export default function Cadastrar({ navigation }: LoginTypes) {
                 <View style={styles.formRow}>
                   <MaterialIcons name="email" style={styles.icon} />
                   <TextInput
+                  value={repEmail}
                     style={styles.input}
                     placeholder="Repetir E-mail"
                     keyboardType="email-address"
@@ -91,6 +98,7 @@ export default function Cadastrar({ navigation }: LoginTypes) {
                 <View style={styles.formRow}>
                   <Entypo name="key" style={styles.icon} />
                   <TextInput
+                    value={senha}
                     style={styles.input}
                     placeholder="Senha"
                     secureTextEntry={true}
@@ -101,6 +109,7 @@ export default function Cadastrar({ navigation }: LoginTypes) {
                 <View style={styles.formRow}>
                   <Entypo name="key" style={styles.icon} />
                   <TextInput
+                  value={repSenha}
                     style={styles.input}
                     placeholder="Repetir Senha"
                     secureTextEntry={true}
