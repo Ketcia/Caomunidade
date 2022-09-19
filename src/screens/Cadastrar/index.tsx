@@ -25,18 +25,24 @@ export default function Cadastrar({ navigation }: LoginTypes) {
   function handleChange(item: IRegister) {
     setData({ ...data, ...item });
   }
-  //async function validar(){
-   // const email = 
-  //}
-
   async function handleRegister() {
     try {
       setIsLoading(true);
       if (data?.email && data.name && data.password) {
-        await register(data);
+        if(data.email !== data.repemail ){
+          Alert.alert("Os campos emails não sao iguais!");
+        }else if (data.password !== data.reppassword){
+          Alert.alert("Os campos senhas não sao iguais!");
+        }
+        else{
+          await register(data);
+        }
       } else {
         Alert.alert("Preencha todos os campos!!!");
       }
+
+      
+
     } catch (error) {
       const err = error as AxiosError;
       const data = err.response?.data as IResponse;
@@ -69,6 +75,7 @@ export default function Cadastrar({ navigation }: LoginTypes) {
                   <Ionicons name="person" style={styles.icon} />
                   <TextInput
                     style={styles.input}
+                    
                     placeholder="Nome"
                     onChangeText={(i) => handleChange({ name: i })}
 
@@ -77,7 +84,6 @@ export default function Cadastrar({ navigation }: LoginTypes) {
                 <View style={styles.formRow}>
                   <MaterialIcons name="email" style={styles.icon} />
                   <TextInput
-                    value={email}
                     style={styles.input}
                     placeholder="E-mail"
                     keyboardType="email-address"
@@ -88,17 +94,18 @@ export default function Cadastrar({ navigation }: LoginTypes) {
                 <View style={styles.formRow}>
                   <MaterialIcons name="email" style={styles.icon} />
                   <TextInput
-                  value={repEmail}
+
                     style={styles.input}
                     placeholder="Repetir E-mail"
                     keyboardType="email-address"
                     autoCapitalize="none"
+                    onChangeText={(i) => handleChange({ repemail: i })}
                   />
                 </View>
                 <View style={styles.formRow}>
                   <Entypo name="key" style={styles.icon} />
                   <TextInput
-                    value={senha}
+
                     style={styles.input}
                     placeholder="Senha"
                     secureTextEntry={true}
@@ -109,11 +116,12 @@ export default function Cadastrar({ navigation }: LoginTypes) {
                 <View style={styles.formRow}>
                   <Entypo name="key" style={styles.icon} />
                   <TextInput
-                  value={repSenha}
+
                     style={styles.input}
                     placeholder="Repetir Senha"
                     secureTextEntry={true}
                     autoCapitalize="none"
+                    onChangeText={(i) => handleChange({ reppassword: i })}
                   />
                 </View>
                 <ButtonComp

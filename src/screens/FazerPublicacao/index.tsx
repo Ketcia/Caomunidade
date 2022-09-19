@@ -30,7 +30,15 @@ export default function FazerPublicacao({ navigation }: ChatTypes) {
     const [selectedTopico, setSelectedTopico] = useState([])
     const [startOver, setStartOver] = useState(true);
     const [type, setType] = useState(Camera.Constants.Type.back);
+    const [hasPermission, setHasPermission] = useState<any>(null);
     let camera: Camera;
+
+    useEffect(() => {
+        (async () => {
+            const { status } = await Camera.requestCameraPermissionsAsync();
+            setHasPermission(status === "granted");
+        })();
+    }, []);
 
     const takePicture = async () => {
         if (!camera) return;
