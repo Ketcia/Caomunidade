@@ -54,7 +54,7 @@ export default function FazerPublicacao({ navigation }: ChatTypes) {
     };
 
     function handleVoltar() {
-        navigation.navigate("Chat");
+        navigation.navigate("Adocao");
     }
     function handleChange(item: IMensagem) {
         setData({ ...data, ...item });
@@ -156,7 +156,7 @@ export default function FazerPublicacao({ navigation }: ChatTypes) {
                             />
                             <ButtonComp
                                 title="Voltar"
-                                type="third"
+                                type="primary"
                                 onPress={handleVoltar}
                             />
                         </KeyboardAvoidingView>
