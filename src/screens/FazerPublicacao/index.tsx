@@ -122,10 +122,8 @@ export default function FazerPublicacao({ navigation }: ChatTypes) {
             {isLoading ? (
                 <LoadingComp />
             ) : (
-                <ImageBackground
-                    source={require("../../assets/fundo.png")}
-                    style={styles.container}
-                >
+                <View
+                    style={styles.container}>
                     {startOver ? (
                         <KeyboardAvoidingView style={styles.containerForm}>
                             <TextInput
@@ -210,7 +208,7 @@ export default function FazerPublicacao({ navigation }: ChatTypes) {
                             </View>
                         </Camera>
                     )}
-                </ImageBackground>
+                </View>
                 
             )}
         </>

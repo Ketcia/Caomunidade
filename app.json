@@ -23,7 +23,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#2BAB71"
-      }
+      },
+      "package": "com.ketcia.caomunidade"
     },
     "web": {
       "favicon": "./assets/favicon.png"
