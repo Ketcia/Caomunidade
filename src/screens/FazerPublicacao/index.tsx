@@ -12,33 +12,25 @@ import {
 import { FontAwesome } from "@expo/vector-icons";
 import {ButtonComp,LoadingComp} from "../../components";
 import styles from "./styles";
-import { ChatTypes } from "../../types/Screen.types";
+import { AdocaoTypes } from "../../types/Screen.types";
 import { AxiosError } from "axios";
 import { IResponse } from "../../interfaces/Response.interface";
-import { apiMensagem, apiTopico} from "../../services/data";
-import { ITopicoState, ITopicoServer } from "../../interfaces/Topico.interface";
+import { apiPublicacao, apiCategoria} from "../../services/data";
+import { ICategoriaState, ICategoriaServer } from "../../interfaces/Categoria.interface";
 import MultiSelect from "react-native-multiple-select";
 import { Camera } from "expo-camera";
 import * as ImagePicker from "expo-image-picker";
-import { IMensagem } from "../../interfaces/Mensagem.interface";
+import { IPublicacao } from "../../interfaces/Publicacao.interface";
 import colors from "../../styles/colors";
 
-export default function FazerPublicacao({ navigation }: ChatTypes) {
-    const [data, setData] = useState<IMensagem>();
+export default function FazerPublicacao({ navigation }: AdocaoTypes) {
+    const [data, setData] = useState<IPublicacao>();
     const [isLoading, setIsLoading] = useState(true);
-    const [topico, setTopico] = useState<ITopicoState[]>([]);
-    const [selectedTopico, setSelectedTopico] = useState([])
+    const [categoria, setCategoria] = useState<ICategoriaState[]>([]);
+    const [selectedCategoria, setSelectedCategoria] = useState([])
     const [startOver, setStartOver] = useState(true);
     const [type, setType] = useState(Camera.Constants.Type.back);
-    const [hasPermission, setHasPermission] = useState<any>(null);
     let camera: Camera;
-
-    useEffect(() => {
-        (async () => {
-            const { status } = await Camera.requestCameraPermissionsAsync();
-            setHasPermission(status === "granted");
-        })();
-    }, []);
 
     const takePicture = async () => {
         if (!camera) return;
@@ -62,15 +54,15 @@ export default function FazerPublicacao({ navigation }: ChatTypes) {
     };
 
     function handleVoltar() {
-        navigation.navigate("Adocao");
+        navigation.navigate("AdocaoNavigation");
     }
-    function handleChange(item: IMensagem) {
+    function handleChange(item: IPublicacao) {
         setData({ ...data, ...item });
     }
     async function handleSubmit() {
         try {
             setIsLoading(true);
-            if (data?.titulo && data.mensagem && selectedTopico && data.imagem) {
+            if (data?.titulo && data.descricao && selectedCategoria && data.imagem) {
                 const imageName = data.imagem.uri?.split("/").pop();
                 const formData = new FormData();
                 formData.append("imagem", data.imagem.base64);
@@ -79,12 +71,12 @@ export default function FazerPublicacao({ navigation }: ChatTypes) {
                 }
                 
                 formData.append("titulo", data.titulo);
-                formData.append("mensagem", data.mensagem);
-                selectedTopico.forEach((e) => {
-                    formData.append("topico[]", e);
+                formData.append("descricao", data.descricao);
+                selectedCategoria.forEach((e) => {
+                    formData.append("categoria[]", e);
                 });
-                await apiMensagem.store(formData as IMensagem);
-                navigation.navigate("Chat");
+                await apiPublicacao.store(formData as IPublicacao);
+                navigation.navigate("AdocaoNavigation");
             } else {
                 Alert.alert("Preencha todos os campos!!!");
                 setIsLoading(false);
@@ -105,15 +97,15 @@ export default function FazerPublicacao({ navigation }: ChatTypes) {
     }
 
     useEffect(() => {
-        async function loadTopico() {
-            const response = await apiTopico.index();
-            const topicosServer = response.data.data.map((item: ITopicoServer) => ({
+        async function loadCategoria() {
+            const response = await apiCategoria.index();
+            const categoriaServer = response.data.data.map((item: ICategoriaServer) => ({
                 id: item.id,
-                name: item.topico,
+                name: item.categoria,
             }));
-            setTopico(topicosServer)
+            setCategoria(categoriaServer)
         }
-        loadTopico();
+        loadCategoria();
         setIsLoading(false);
     }, []);
 
@@ -122,8 +114,7 @@ export default function FazerPublicacao({ navigation }: ChatTypes) {
             {isLoading ? (
                 <LoadingComp />
             ) : (
-                <View
-                    style={styles.container}>
+                <View style={styles.container}>
                     {startOver ? (
                         <KeyboardAvoidingView style={styles.containerForm}>
                             <TextInput
@@ -135,9 +126,25 @@ export default function FazerPublicacao({ navigation }: ChatTypes) {
                                 style={styles.input}
                                 multiline={true}
                                 numberOfLines={4}
-                                placeholder="Mensagem"
-                                onChangeText={(i) => handleChange({ mensagem: i })}
+                                placeholder="Descrição"
+                                onChangeText={(i) => handleChange({ descricao: i })}
                             />
+                            <View style={styles.select}>
+                                <MultiSelect
+                                    items={categoria}
+                                    uniqueKey="id"
+                                    selectText="Selecione as categorias"
+                                    onSelectedItemsChange={(i) => setSelectedCategoria(i)}
+                                    selectedItems={selectedCategoria}
+                                    selectedItemTextColor={colors.marromC}
+                                    tagBorderColor={colors.marromC}
+                                    tagTextColor={colors.marromC}
+                                    submitButtonColor={colors.marromC}
+                                    styleDropdownMenu={styles.selectTopico}
+                                    styleInputGroup={styles.selectTopico}
+                                    styleMainWrapper={{backgroundColor: colors.fundo}}
+                                />
+                            </View>
                             <View style={styles.imagem}>
                                 <TouchableOpacity
                                     style={styles.buttonImage}
