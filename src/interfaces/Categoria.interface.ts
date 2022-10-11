@@ -3,13 +3,13 @@ export interface ICategoria {
     message: string,
     data: {
         id: number,
-        categoria: string
+        topico: string
     }[]
 }
 
 export interface ICategoriaServer {
     id: number,
-    categoria: string
+    topico: string
 }
 
 export interface ICategoriaState {

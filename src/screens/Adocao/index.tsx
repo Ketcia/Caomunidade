@@ -10,40 +10,32 @@ import {
 } from "react-native";
 import {CardComp, LoadingComp} from "../../components";
 import {AdocaoTypes} from "../../types/Screen.types";
-import {apiMensagem} from "../../services/data";
-import {IMensagemState} from "../../interfaces/Mensagem.interface";
+import {apiPublicacao} from "../../services/data";
+import {IPublicacaoState} from "../../interfaces/Publicacao.interface";
 import styles from "./styles";
 import data from "../../services/data";
 
 
 export default function Adocao({navigation}:AdocaoTypes) {
   const [isLoading, setIsLoading] = useState(true);
-  const [mensagem, setMensagem] = useState<IMensagemState[]>([]);
+  const [publicacao, setPublicacao] = useState<IPublicacaoState[]>([]);
   function handleadocao() {
     navigation.navigate("FazerPublicacao");
   }
 
   useEffect(() => {
-    async function loadMensagem() {
-      const response = await apiMensagem.index();
-      setMensagem(response.data.data);
+    async function loadPublicacao() {
+      const response = await apiPublicacao.index();
+      setPublicacao(response.data.data);
       setIsLoading(false);
     }
-    navigation.addListener("focus", () => loadMensagem());
+    navigation.addListener("focus", () => loadPublicacao());
   },[]);
 
   const renderItem = ({ item }) => <CardComp data={item} />;
   return (
       <>
         <SafeAreaView style={styles.container}>
-          {mensagem.length > 0 && (
-            <FlatList
-              data={data}
-              renderItem={renderItem}
-              keyExtractor={(item) => String(item.id)}
-              style={styles.list}
-            />
-          )}
           <TouchableOpacity style={styles.button} onPress={handleadocao}>
             <Text style={styles.buttonText}>+</Text>
           </TouchableOpacity>

@@ -1,6 +1,6 @@
 import axios from "axios";
 const api = axios.create({
-    baseURL: "https://ketcia-laravel.herokuapp.com/api",
+    baseURL: "https://backend-caomunidade.herokuapp.com/api",
     headers: {
         Accept: 'application/json',
     }

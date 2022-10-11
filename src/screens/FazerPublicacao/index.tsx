@@ -54,7 +54,7 @@ export default function FazerPublicacao({ navigation }: AdocaoTypes) {
     };
 
     function handleVoltar() {
-        navigation.navigate("AdocaoNavigation");
+        navigation.navigate("Adocao");
     }
     function handleChange(item: IPublicacao) {
         setData({ ...data, ...item });
@@ -76,7 +76,7 @@ export default function FazerPublicacao({ navigation }: AdocaoTypes) {
                     formData.append("categoria[]", e);
                 });
                 await apiPublicacao.store(formData as IPublicacao);
-                navigation.navigate("AdocaoNavigation");
+                navigation.navigate("Adocao");
             } else {
                 Alert.alert("Preencha todos os campos!!!");
                 setIsLoading(false);
@@ -101,7 +101,7 @@ export default function FazerPublicacao({ navigation }: AdocaoTypes) {
             const response = await apiCategoria.index();
             const categoriaServer = response.data.data.map((item: ICategoriaServer) => ({
                 id: item.id,
-                name: item.categoria,
+                name: item.topico,
             }));
             setCategoria(categoriaServer)
         }
@@ -134,15 +134,17 @@ export default function FazerPublicacao({ navigation }: AdocaoTypes) {
                                     items={categoria}
                                     uniqueKey="id"
                                     selectText="Selecione as categorias"
-                                    onSelectedItemsChange={(i) => setSelectedCategoria(i)}
+                                    onSelectedItemsChange={(i:any) => setSelectedCategoria(i)}
                                     selectedItems={selectedCategoria}
+                                    fixedHeight={true}
                                     selectedItemTextColor={colors.marromC}
-                                    tagBorderColor={colors.marromC}
-                                    tagTextColor={colors.marromC}
+                                    tagBorderColor={colors.marrom}
+                                    tagTextColor={colors.marrom}
                                     submitButtonColor={colors.marromC}
                                     styleDropdownMenu={styles.selectTopico}
                                     styleInputGroup={styles.selectTopico}
-                                    styleMainWrapper={{backgroundColor: colors.fundo}}
+                                    hideSubmitButton={true}
+                            
                                 />
                             </View>
                             <View style={styles.imagem}>

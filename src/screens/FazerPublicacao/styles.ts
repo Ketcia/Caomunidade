@@ -27,6 +27,7 @@ const styles = StyleSheet.create({
     },
     select: {
         width: "80%",
+        // height:0.5,
     },
     selectTopico: {
         borderWidth: 1,
