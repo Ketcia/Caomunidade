@@ -24,6 +24,7 @@ import { IPublicacao } from "../../interfaces/Publicacao.interface";
 import colors from "../../styles/colors";
 
 export default function FazerPublicacao({ navigation }: AdocaoTypes) {
+    const [hasPermission, setHasPermission] = useState<any>(null);
     const [data, setData] = useState<IPublicacao>();
     const [isLoading, setIsLoading] = useState(true);
     const [categoria, setCategoria] = useState<ICategoriaState[]>([]);
@@ -31,6 +32,13 @@ export default function FazerPublicacao({ navigation }: AdocaoTypes) {
     const [startOver, setStartOver] = useState(true);
     const [type, setType] = useState(Camera.Constants.Type.back);
     let camera: Camera;
+
+    useEffect(() => {
+        (async () => {
+            const { status } = await Camera.requestCameraPermissionsAsync();
+            setHasPermission(status === "granted");
+        })();
+    }, []);
 
     const takePicture = async () => {
         if (!camera) return;
@@ -73,7 +81,7 @@ export default function FazerPublicacao({ navigation }: AdocaoTypes) {
                 formData.append("titulo", data.titulo);
                 formData.append("descricao", data.descricao);
                 selectedCategoria.forEach((e) => {
-                    formData.append("categoria[]", e);
+                    formData.append("topico[]", e);
                 });
                 await apiPublicacao.store(formData as IPublicacao);
                 navigation.navigate("Adocao");
@@ -91,6 +99,7 @@ export default function FazerPublicacao({ navigation }: AdocaoTypes) {
                 }
             }
             Alert.alert(`${data.message} ${message}`);
+            console.log(message)
         } finally {
             setIsLoading(false);
         }

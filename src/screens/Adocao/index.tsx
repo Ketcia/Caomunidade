@@ -23,23 +23,13 @@ export default function Adocao({navigation}:AdocaoTypes) {
     navigation.navigate("FazerPublicacao");
   }
 
-  useEffect(() => {
-    async function loadPublicacao() {
-      const response = await apiPublicacao.index();
-      setPublicacao(response.data.data);
-      setIsLoading(false);
-    }
-    navigation.addListener("focus", () => loadPublicacao());
-  },[]);
 
-  const renderItem = ({ item }) => <CardComp data={item} />;
   return (
       <>
-        <SafeAreaView style={styles.container}>
           <TouchableOpacity style={styles.button} onPress={handleadocao}>
             <Text style={styles.buttonText}>+</Text>
           </TouchableOpacity>
-        </SafeAreaView>
+
       </>
   );
 }
