@@ -29,17 +29,19 @@ export interface IPublicacaoResponse {
     }[]
 }
 export interface IPublicacaoState {
-    id: number
-    titulo: string
-    descricao: string
-    imagem: string
-    created_at: Date
-    categorias: {
+    data: {
         id: number
-        categoria: string
-    }[]
-    user: {
-        id: number
-        name: string
+        titulo: string
+        descricao: string
+        imagem: string
+        created_at: Date
+        categorias: {
+            id: number
+            categoria: string
+        }[]
+        user: {
+            id: number
+            name: string
+        }
     }
 }

@@ -17,9 +17,9 @@ export default function Card({data}: IPublicacaoState) {
         <Text>Publicacao: {data.descricao}</Text>
         <Image source={{ uri: data.imagem }} style={styles.img} />
         <View style={styles.topicos}>
-          {data.topicos.map((i) => (
+          {data.categorias.map((i) => (
             <View key={i.id} style={styles.topic}>
-              <Text>{i.item}</Text>
+              <Text>{i.categoria}</Text>
             </View>
           ))}
         </View>

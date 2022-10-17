@@ -6,6 +6,7 @@ import { useAuth } from "../hook/auth";
 
 export default function Navigation() {
   const { access_token } = useAuth();
+  console.log(access_token)
   return (
     <NavigationContainer>
       {access_token ? <TabNavigation /> : <LoginNavigation />}
