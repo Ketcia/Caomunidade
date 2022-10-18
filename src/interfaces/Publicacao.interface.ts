@@ -35,7 +35,7 @@ export interface IPublicacaoState {
         descricao: string
         imagem: string
         created_at: Date
-        categorias: {
+        categoria: {
             id: number
             categoria: string
         }[]

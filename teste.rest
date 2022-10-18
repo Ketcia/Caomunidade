@@ -1,27 +1,10 @@
-POST https://ketcia-laravel.herokuapp.com/api/publicacao HTTP/1.1
-Content-Type: application/json
-
-{
-    "tituo":"rsadm",
-    "descricao":"asdsadas",
-    "categoria":"1",
-    "imagem":"asdsadasd.jpg"
-    
-}
-
 ########## lista
-GET https://ketcia-laravel.herokuapp.com/api/publicacao HTTP/1.1
+GET https://backend-caomunidade.herokuapp.com/api/publicacao HTTP/1.1
 Content-Type: application/json
 Accept: application/json
-Authorization: Bearer 3|zSdGKNGQghVgbysjNupV4XlJfUkcHVydmlucqfPN
+Authorization: Bearer 6|0yzlzCjzBzpsHbpMDbTUD92F1IRXAcyYnoZf8X1G
 
-########## lista
-GET http://127.0.0.1:8000/api/publicacao HTTP/1.1
-Content-Type: application/json
-Accept: application/json
-Authorization: Bearer 1|8RILepaz9bLEvok4pWjhk5tV5i3VTUtLcgjhWf0r
-
-########## lista
+########## login
 POST  http://127.0.0.1:8000/api/login HTTP/1.1
 Content-Type: application/json
 Accept: application/json
@@ -30,3 +13,10 @@ Accept: application/json
     "email":"leticiarafael98@gmail.com",
     "password":"518349276Tp!"
 }
+
+#########
+
+GET http://127.0.0.1:8000/api/publicacao HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer 1|7NWQU24TrzLsgxMPzelNGWLWLbBosmmcky1OPyAY

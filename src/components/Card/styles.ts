@@ -9,6 +9,10 @@ const styles = StyleSheet.create({
     width: "95%",
     alignItems: "center",
   },
+  img:{
+    width:50,
+    height:50,
+  },
 })
 
 export default styles;
