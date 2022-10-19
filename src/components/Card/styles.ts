@@ -4,15 +4,34 @@ import colors from "../../styles/colors";
 const styles = StyleSheet.create({
   card: {
     backgroundColor: colors.marromC,
-    borderRadius: 10,
+    borderRadius: 5,
     margin: 10,
+    alignItems: "flex-start",
     width: "95%",
-    alignItems: "center",
+    padding: 10,
   },
-  img:{
-    width:50,
-    height:50,
+  topicos: {
+    flexDirection: "row",
   },
+  topic: {
+    backgroundColor: colors.marrom,
+    margin: 5,
+    borderRadius: 5,
+    padding: 5,
+    
+  },
+  img: {
+    width: 300,
+    height: 300,
+  },
+  titulo:{
+    fontWeight: 'bold',
+    fontSize: 15,
+  },
+  usuario:{
+    fontWeight: 'bold',
+    fontSize: 18,
+  }
 })
 
-export default styles;
+export default styles

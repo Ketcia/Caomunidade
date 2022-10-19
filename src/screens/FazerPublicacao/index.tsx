@@ -197,7 +197,6 @@ export default function FazerPublicacao({ navigation }: AdocaoTypes) {
                                     <TouchableOpacity
                                         onPress={() => {
                                             setStartOver(true);
-                                            console.log("clicou");
                                         }}
                                     >
                                         <Text style={styles.textClose}>X</Text>

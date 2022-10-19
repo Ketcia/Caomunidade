@@ -23,7 +23,6 @@ export default function Home({ navigation }:AdocaoTypes) {
   useEffect(() => {
     async function loadPublicacao() {
       const response = await apiPublicacao.index();
-      console.log(response.data.data)
       setPublicacao(response.data.data);
       setIsLoading(false);
       
