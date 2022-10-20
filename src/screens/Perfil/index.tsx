@@ -6,6 +6,7 @@ import Button from "../../components/Button";
 import { ButtonComp, CardSocialComp, LoadingComp } from "../../components";
 import { useAuth } from "../../hook/auth";
 import { IUser } from "../../interfaces/User.interface";
+import { Foundation } from '@expo/vector-icons';
 import { AxiosError } from "axios";
 
 export default function Perfil() {
@@ -42,17 +43,19 @@ export default function Perfil() {
 
           <Text style={styles.title}>{user?.name}</Text>
           <CardSocialComp>
-            <>
+            <View style={styles.card}>
               <FontAwesome5 name="map-marker-alt" style={styles.icon} />
               <Text style={styles.link}>R. Maria Aparecida, 199, Centro</Text>
-            </>
+            </View>
+              
+            <View style={styles.card}>
+            <Foundation name="telephone" style={styles.icon} />
+              <Text style={styles.link}>(35)999123456</Text>
+            
+            </View>
+              
           </CardSocialComp>
           <View style={styles.button}>
-            <Button
-              title="Alterar Senha"
-              type="primary"
-              onPress={() => console.log("Alterar Senha")}
-            />
             <Button title="Sair" type="primary" onPress={logout} />
           </View>
 

@@ -3,13 +3,13 @@ import colors from "../../styles/colors";
 
 const styles = StyleSheet.create({
   cardSocial: {
-    backgroundColor: colors.marrom,
-    borderRadius: 10,
+    borderRadius: 5,
+
     margin: 10,
-    width: "90%",
-    flexDirection: "row",
+    width: "100%",
+    flexDirection: "column",
     alignItems: "center",
-    height: 45,
+
   }
 })
 

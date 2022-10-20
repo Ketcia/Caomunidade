@@ -1,5 +1,6 @@
 import { StyleSheet } from "react-native"
 import colors from "../../styles/colors";
+import Button from "../../components/Button";
 
 const styles = StyleSheet.create({
   container: {
@@ -30,6 +31,18 @@ const styles = StyleSheet.create({
     height: 80,
     borderRadius: 40,
   },
+  card:{
+    flexDirection: "row",
+    backgroundColor: colors.marrom,
+    margin:10,
+    borderRadius: 5,
+    padding:5,
+    width:"90%",
+    
+  },
+  button:{
+    width:"90%",
+  }
 })
 
 export default styles
