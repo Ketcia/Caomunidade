@@ -20,6 +20,7 @@ export default function Home({ navigation }:AdocaoTypes) {
   const [publicacao, setPublicacao] = useState<IPublicacaoState[]>([]);
 
 
+
   useEffect(() => {
     async function loadPublicacao() {
       const response = await apiPublicacao.index();
@@ -29,15 +30,15 @@ export default function Home({ navigation }:AdocaoTypes) {
     }
     navigation.addListener("focus", () => loadPublicacao());
   }, []);
-
-
+  
   const renderItem = ({item}) => <CardComp data={item} />;
   return (
     <>
+      
       {isLoading ? (
         <LoadingComp />
       ) : (
-
+            
             <SafeAreaView style={styles.container}>
               {publicacao.length > 0 && (
                 <FlatList

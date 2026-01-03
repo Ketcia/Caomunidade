@@ -9,9 +9,13 @@ export default function Card({data}: IPublicacaoState) {
 
   function handleadocao() {
     console.log("Perfil")
+    console.log('CATEGORIAS:', data.categoria);
   }
+
   return (
+
     <View style={styles.card}>
+      
       <TouchableOpacity onPress={handleadocao}>
       <Text style={styles.usuario}>
         {data?.user.name}
@@ -21,11 +25,11 @@ export default function Card({data}: IPublicacaoState) {
       <View>
         <Text style={styles.titulo}>{data.titulo}</Text>
         <Text>{data.descricao}</Text>
-        <Image source={{ uri: data.imagem }} style={styles.img} />
+        <Image source={{ uri: `data:image/jpeg;base64,${data.imagem}` }} style={styles.img} />
         <View style={styles.topicos}>
           {data?.categoria.map((i) => (
             <View key={i.id} style={styles.topic}>
-              <Text>{i.categoria}</Text>
+              <Text>{i.topico}</Text>
             </View>
           ))}
         </View>

@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
         height: 2
     },
     select: {
-        width: "80%",
+        width: "100%",
         // height:0.5,
     },
     selectTopico: {
@@ -37,11 +37,16 @@ const styles = StyleSheet.create({
         height: 70
     },
     imagem: {
+        flexDirection: "column",
+    },
+
+    buttonCamera: {
+        alignItems: "center",
         flexDirection: "row",
     },
     img: {
-        width: 100,
-        height: 100,
+        width: 150,
+        height: 150,
     },
     buttonImage: {
         margin: 10,

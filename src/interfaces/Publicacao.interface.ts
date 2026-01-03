@@ -18,9 +18,9 @@ export interface IPublicacaoResponse {
         descricao: string
         imagem: string
         created_at: Date
-        categorias: {
+        categoria: {
             id: number
-            categoria: string
+            topico: string
         }[]
         user: {
             id: number
@@ -28,6 +28,7 @@ export interface IPublicacaoResponse {
         }
     }[]
 }
+
 export interface IPublicacaoState {
     data: {
         id: number
@@ -37,7 +38,7 @@ export interface IPublicacaoState {
         created_at: Date
         categoria: {
             id: number
-            categoria: string
+            topico: string
         }[]
         user: {
             id: number

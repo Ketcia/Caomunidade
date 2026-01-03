@@ -13,7 +13,6 @@ import {AdocaoTypes} from "../../types/Screen.types";
 import {apiPublicacao} from "../../services/data";
 import {IPublicacaoState} from "../../interfaces/Publicacao.interface";
 import styles from "./styles";
-import data from "../../services/data";
 
 
 export default function Adocao({navigation}:AdocaoTypes) {
@@ -22,7 +21,6 @@ export default function Adocao({navigation}:AdocaoTypes) {
   function handleadocao() {
     navigation.navigate("FazerPublicacao");
   }
-
 
   return (
       <>

@@ -1,6 +1,6 @@
 import axios from "axios";
 const api = axios.create({
-    baseURL: "https://backend-caomunidade.herokuapp.com/api",
+    baseURL: "https://backendcaomunidade.up.railway.app/api",
     headers: {
         Accept: 'application/json',
     }
